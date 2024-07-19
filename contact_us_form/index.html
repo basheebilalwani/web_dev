@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="codesquad"><h1>Contact Us</h1></div>
+    <div class="form-container">
+        <form>
+            <div class="input-group">
+                <label for="name"><i class="fa fa-user"></i></label>
+                <input type="text" id="name" name="name" placeholder="Full Name" required>
+                <span id="name-error" class="error-message"></span>
+            </div>
+            <div class="input-group">
+                <label for="email"><i class="fa fa-envelope"></i></label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <span id="email-error" class="error-message"></span>
+            </div>
+            <div class="input-group">
+                <div class="message-icon-container">
+                    <div class="message-">
+                        <label for="message"><i class="fa fa-comment"></i></label>
+                    </div>
+                </div>
+                <textarea id="message" name="message" placeholder="Message"></textarea>
+                <span id="message-count">0/100</span>
+                <span id="message-error" class="error-message"></span>
+            </div>
+            <div class="input-group">
+                <label for="image"><i class="fa fa-image"></i></label>
+                <input type="file" id="image" name="image" accept=".jpg,.png">
+                <span id="image-error" class="error-message"></span>
+            </div>
+            <div class="form-button-container">
+                <button class="button-59" role="button">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const form = document.querySelector('form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const fileInput = document.getElementById('image');
+
+        let nameError = false;
+        let emailError = false;
+        let messageError = false;
+
+        nameInput.addEventListener('input', (e) => {
+            const name = nameInput.value.trim();
+            const nameRegex = /^[a-zA-Z ]{3,20}$/;
+            if (!nameRegex.test(name) && name !== '') {
+                nameError = true;
+            } else {
+                nameError = false;
+            }
+        });
+
+        emailInput.addEventListener('input', (e) => {
+            const email = emailInput.value.trim();
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email) && email !== '') {
+                emailError = true;
+            } else {
+                emailError = false;
+            }
+        });
+
+        messageInput.addEventListener('input', (e) => {
+            const message = messageInput.value.trim();
+            const messageCount = document.getElementById('message-count');
+            messageCount.textContent = `${message.length}/100`;
+            if (message.length > 100 && message !== '') {
+                messageError = true;
+            } else {
+                messageError = false;
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = fileInput.files[0];
+            const fileType = file.type;
+            const allowedTypes = ['image/jpeg', 'image/png'];
+            if (!allowedTypes.includes(fileType)) {
+                alert('Only .jpg and .png files are allowed');
+                fileInput.value = ''; // reset the input value
+            }
+        });
+
+        nameInput.addEventListener('blur', (e) => {
+            if (nameError) {
+                document.getElementById('name-error').innerText = 'Invalid name. Only alphabets and spaces are allowed. Minimum length is 3 characters and maximum is 20 characters.';
+            } else {
+                document.getElementById('name-error').innerText = '';
+            }
+        });
+
+        emailInput.addEventListener('blur', (e) => {
+            if (emailError) {
+                document.getElementById('email-error').innerText = 'Invalid email address.';
+            } else {
+                document.getElementById('email-error').innerText = '';
+            }
+        });
+
+        messageInput.addEventListener('blur', (e) => {
+            if (messageError) {
+                document.getElementById('message-error').innerText = 'Message should not exceed 100 characters.';
+            } else {
+                document.getElementById('message-error').innerText = '';
+            }
+        });
+
+        form.addEventListener('submit', (e) => {
+            if (nameError || emailError || messageError ||fileInput.value !== '' && !allowedTypes.includes(fileInput.files[0].type)) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

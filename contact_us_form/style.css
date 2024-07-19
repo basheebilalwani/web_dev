@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', system-ui;
+    background-color: #ecfdf5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff7ed;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+}
+
+.codesquad {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    background-color: #d7d1d0;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.error-message {
+    font-size: 12px;
+    color: #000;
+    display: block;
+    margin-top: 5px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative;
+}
+
+.input-group label {
+    margin-right: 10px;
+    font-size: 16px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-left: 25px;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label {
+    top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.input-group textarea {
+    height: 80px;
+    resize: none;
+    overflow-y: auto;
+}
+
+.message-icon-container,
+.file-icon-container {
+    position: absolute;
+    left: 2px;
+    top: 18px;
+}
+
+.message-icon,
+.file-icon {
+    width: 20px;
+    height: 20px;
+}
+
+::placeholder {
+    color: #b7b5b5;
+    font-family: sans-serif;
+}
+
+.button-59 {
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-flex;
+    fill: #000;
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    min-width: 140px;
+    outline: 0;
+    padding: 0 17px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-59:hover {
+    border-color: #fff;
+    color: #fff;
+    background-color: #000;
+}
+
+.button-59:active {
+    border-color: white;
+    color: white;
+    fill: white;
+}
+
+input[type="file"] {
+    padding-left: 25px;
+}
+
+input::file-selector-button {
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-flex;
+    fill: #000;
+    font-size: 12px;
+    font-weight: 600;
+    height: 25px;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    outline: 0;
+    padding: 0 17px ;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+input::file-selector-button:hover {
+    border-color: #fff;
+    color: #fff;
+    background-color: #000;
+}
+
+input[type="file"]::after {
+    content: '(.jpg/.png only)';
+    color: black;
+    margin-right: 30px;
+}
+
+@media (min-width: 768px) {
+    .button-59 {
+        min-width: 170px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container,
+    .form-container {
+        width: 90%;
+        margin:20px auto;
+    }
+
+    .input-group label {
+        margin-right: 0;
+    }
+
+    .button-59 {
+        min-width: 120px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-container {
+        padding: 15px;
+    }
+
+    .input-group textarea {
+        height: 60px;
+    }
+
+    .button-59 {
+        min-width: 100px;
+        font-size: 12px;
+    }
+}
